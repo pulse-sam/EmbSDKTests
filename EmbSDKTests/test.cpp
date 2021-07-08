@@ -89,7 +89,7 @@ bool SaveAsDesign(EmbDesign* pDes, PulseEmbSDK::FileTypes ft)
 		return false;
 	}
 
-	EmbDesign_Save(pDes, pcfFile, L_tmpnam, ft, funcErrHandler);
+	EmbDesign_Save(pDes, pcfFile, L_tmpnam, ft);
 
 	char* format = "tajima";
 	EmbDesign* pNewDes = EmbDesign_Open(
@@ -113,7 +113,7 @@ bool CheckFile(const char* fileName)
 }
 
 #ifdef TEST_DESIGN
-TEST_F(TestEmbDesign, TestDesign) {
+TEST_F(TestEmbDesign, OpenDesign) {
 	ASSERT_TRUE(_pDes);
 
 
@@ -137,7 +137,7 @@ TEST_F(TestEmbDesign, TestDesign) {
 	BitmapImage_Fill(pBmp, 0, 0, 0, 0);
 	RenderOptions* pOpt = RenderOptions_New();
 	RenderOptions_setArtworkMinMax(pOpt, ammfOutlines);
-	EmbDesign_Render2(_pDes, pBmp, 0, 0, 200, 200, pOpt, funcErrHandler);
+	EmbDesign_Render2(_pDes, pBmp, 0, 0, 200, 200, pOpt);
 
 	char pngFile[L_tmpnam] = { 0 };
 	EXPECT_TRUE(0 == tmpnam_s(pngFile, L_tmpnam));
@@ -175,6 +175,7 @@ TEST_F(TestEmbDesign, TestDesign) {
 
 	std::cout << "EmbDesign: ALL PASSED\n";
 }
+
 #endif // TEST_DESIGN
 
 #ifdef TEST_NEEDLESEQ

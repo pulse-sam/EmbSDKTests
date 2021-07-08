@@ -83,8 +83,7 @@ TEST(TestTextProperty, GetSet)
 		PulseEmbSDK::JustifyTypes::jtCenter, 
 		PulseEmbSDK::EnvelopeTypes::etRectangle,
 		2, tp,
-		elName, (uint)strlen(elName),
-		funcErrHandler);
+		elName, (uint)strlen(elName));
 
 	_testCase = "Save the design";
 	bool ret = SaveAsDesign(pDes, PulseEmbSDK::FileTypes::ftAuto);
